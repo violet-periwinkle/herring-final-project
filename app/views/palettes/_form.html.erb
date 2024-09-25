@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :background, style: "display: block" %>
-    <%= form.text_field :background %>
+    <%= form.color_field :background %>
   </div>
 
   <div>
@@ -35,7 +35,14 @@
     <%= form.label :spacing, style: "display: block" %>
     <%= form.number_field :spacing %>
   </div>
-
+  <div>
+    <%= form.fields_for :colors do |colors_form| %>
+      <%= colors_form.color_field :hex_code %>
+      <%= colors_form.label :_destroy, 'remove' %>
+      <%= colors_form.check_box :_destroy %>
+      <%= colors_form.hidden_field :id %>
+    <% end %>
+  </div>
   <div>
     <%= form.submit %>
   </div>

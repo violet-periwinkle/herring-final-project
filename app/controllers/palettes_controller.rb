@@ -1,5 +1,5 @@
 class PalettesController < ApplicationController
-  before_action :set_palette, only: %i[ show edit update destroy ]
+  before_action :set_palette, only: %i[ show edit update destroy add]
 
   # GET /palettes or /palettes.json
   def index
@@ -13,6 +13,11 @@ class PalettesController < ApplicationController
   # GET /palettes/new
   def new
     @palette = Palette.new
+  end
+
+  def add
+    Color.create(palette_id: @palette.id, hex_code: "#808080")
+    redirect_to edit_palette_path(@palette)
   end
 
   # GET /palettes/1/edit
@@ -65,6 +70,6 @@ class PalettesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def palette_params
-      params.require(:palette).permit(:title, :user_id, :background, :layout, :spacing)
+      params.require(:palette).permit(:title, :user_id, :background, :layout, :spacing, colors_attributes: [:id, :hex_code, :palette_id, :_destroy])
     end
 end

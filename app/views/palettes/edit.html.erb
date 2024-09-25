@@ -1,9 +1,9 @@
 <h1>Editing palette</h1>
 
 <%= render "form", palette: @palette %>
-
+    <%= button_to "add color", add_color_path(@palette) %>
 <br>
-<%= link_to "add color", new_color_path %>
+
 <div>
   <%= link_to "Show this palette", @palette %> |
   <%= link_to "Back to palettes", palettes_path %>

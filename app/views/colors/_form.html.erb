@@ -13,12 +13,12 @@
 
   <div>
     <%= form.label :hex_code, style: "display: block" %>
-    <%= form.text_field :hex_code %>
+    <%= form.color_field :hex_code, value: "#808080" %>
   </div>
 
   <div>
     <%= form.label :palette_id, style: "display: block" %>
-    <%= form.text_field :palette_id %>
+    <%= form.hidden_field :palette_id, value: @palette %>
   </div>
 
   <div>

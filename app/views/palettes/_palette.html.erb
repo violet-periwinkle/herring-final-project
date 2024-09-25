@@ -1,0 +1,32 @@
+<div id="<%= dom_id palette %>">
+  <p>
+    <strong>Title:</strong>
+    <%= palette.title %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= palette.user_id %>
+  </p>
+
+  <p>
+    <strong>Background:</strong>
+    <%= palette.background %>
+  </p>
+
+  <p>
+    <strong>Layout:</strong>
+    <%= palette.layout %>
+  </p>
+
+  <p>
+    <strong>Spacing:</strong>
+    <%= palette.spacing %>
+  </p>
+  <p><strong>Colors:</strong><ul>
+  <% palette.colors.each do |color| %>
+  <li><%= link_to color.hex_code, color %></li>
+  <%end%>
+  </ul>
+  </p>
+</div>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Palettes</h1>
+
+<div id="palettes">
+  <% @palettes.each do |palette| %>
+    <%= render palette %>
+    <p>
+      <%= link_to "Show this palette", palette %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New palette", new_palette_path %>

@@ -1,0 +1,42 @@
+<%= form_with(model: palette) do |form| %>
+  <% if palette.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(palette.errors.count, "error") %> prohibited this palette from being saved:</h2>
+
+      <ul>
+        <% palette.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :background, style: "display: block" %>
+    <%= form.text_field :background %>
+  </div>
+
+  <div>
+    <%= form.label :layout, style: "display: block" %>
+    <%= form.text_field :layout %>
+  </div>
+
+  <div>
+    <%= form.label :spacing, style: "display: block" %>
+    <%= form.number_field :spacing %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

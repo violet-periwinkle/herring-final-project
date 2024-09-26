@@ -24,9 +24,10 @@
     <%= palette.spacing %>
   </p>
   <p><strong>Colors:</strong><ul>
-  <% palette.colors.each do |color| %>
+  <% @palette.colors.each do |color| %>
   <li><%= link_to color.hex_code, color %></li>
   <%end%>
   </ul>
   </p>
+  <%= render 'swatches', palette: @palette %>
 </div>

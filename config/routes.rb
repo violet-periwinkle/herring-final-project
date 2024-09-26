@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :colors
   resources :palettes do
-    resources :colors
-  end
+    resources :colors do
+      post 'add', on: :collection;
+    end
+  end 
+  resources :colors
   post "palettes/:id/add", to: "palettes#add", as: "add_color"
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

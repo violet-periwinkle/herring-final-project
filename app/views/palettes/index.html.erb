@@ -4,6 +4,7 @@
 
 <div id="palettes">
   <% @palettes.each do |palette| %>
+    <% @palette = palette %>
     <%= render palette %>
     <p>
       <%= link_to "Show this palette", palette %>

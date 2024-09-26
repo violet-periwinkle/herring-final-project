@@ -1,0 +1,5 @@
+<div class="palette-display" style="background-color: <%= @palette.background %>; ">
+    <% @palette.colors.each do |color| %>
+    <div class="color-swatch" style="background-color: <%= color.hex_code %>; flex-grow: <%= color.proportion %>; margin: <%= @palette.spacing.to_f / 2 %>rem"></div>
+    <% end %>
+</div>

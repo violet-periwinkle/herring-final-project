@@ -38,6 +38,8 @@
   <div>
     <%= form.fields_for :colors do |colors_form| %>
       <%= colors_form.color_field :hex_code %>
+      <%= colors_form.label :proportion %>
+      <%= colors_form.number_field :proportion %>
       <%= colors_form.label :_destroy, 'remove' %>
       <%= colors_form.check_box :_destroy %>
       <%= colors_form.hidden_field :id %>

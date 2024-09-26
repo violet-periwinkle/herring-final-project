@@ -9,7 +9,7 @@ class ColorsController < ApplicationController
   # GET /colors/1 or /colors/1.json
   def show
   end
-
+  
   # GET /colors/new
   def new
     @color = Color.new
@@ -60,11 +60,12 @@ class ColorsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_color
+      @palette = Palette.find(params[:palette_id])
       @color = Color.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def color_params
-      params.require(:color).permit(:hex_code, :palette_id)
+      params.fetch(:color, {hex_code: '#808080', proportion: 1, palette_id: params[:palette_id]}).permit(:id, :hex_code, :proportion, :palette_id)
     end
 end

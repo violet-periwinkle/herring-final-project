@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+:root{
+    background-color: #f0f0f0;
+}

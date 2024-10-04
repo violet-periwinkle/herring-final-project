@@ -6,7 +6,7 @@
   <% @colors.each do |color| %>
     <%= render color %>
     <p>
-      <%= link_to "Show this color", color %>
+      <%= link_to "Show this color", palette_color_path(color.palette, color) %>
     </p>
   <% end %>
 </div>

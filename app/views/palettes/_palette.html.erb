@@ -6,7 +6,7 @@
 
   <p>
     <strong>User:</strong>
-    <%= palette.user_id %>
+    <%= palette.user.name %>
   </p>
 
   <p>
@@ -25,7 +25,7 @@
   </p>
   <p><strong>Colors:</strong><ul>
   <% @palette.colors.each do |color| %>
-  <li><%= link_to color.hex_code, color %></li>
+  <li><%= link_to color.hex_code, palette_color_path(@palette, color) %></li>
   <%end%>
   </ul>
   </p>

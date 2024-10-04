@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   resources :palettes do
-    resources :colors do
-      post 'add', on: :collection;
-    end
+    resources :colors
   end 
-  resources :colors
-  post "palettes/:id/add", to: "palettes#add", as: "add_color"
+  #resources :colors
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -15,4 +12,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root "palettes#index"
 end

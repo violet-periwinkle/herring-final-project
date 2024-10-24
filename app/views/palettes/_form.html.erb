@@ -10,42 +10,61 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="container-fluid bg-light">
+  <div class="row">
+    <div class="col">
+      
+        <%= form.label :title, class: "form-label"%>
+        <%= form.text_field :title, class: "form-control" %>
+      
+    </div>
+    <div class="col">
+      <%= form.label :layout, class: "form-label" %>
+      <%= form.select :layout, ['rows', 'columns'], {}, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :spacing, class: "form-label" %>
+      <%= form.number_field :spacing, class: "form-control" %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.collection_select :user_id, User.all, :id, :name %>
+  <div class="row">
+    <div class="col">
+      <%= form.label :background, class: "form-label" %>
+      <%= form.color_field :background, class: "form-control form-control-color w-100" %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :background, style: "display: block" %>
-    <%= form.color_field :background %>
-  </div>
-
-  <div>
-    <%= form.label :layout, style: "display: block" %>
-    <%= form.select :layout, ['rows', 'columns']%>
-  </div>
-
-  <div>
-    <%= form.label :spacing, style: "display: block" %>
-    <%= form.number_field :spacing %>
-  </div>
-  <div>
+  <div class="row">
     <%= form.fields_for :colors do |colors_form| %>
-      <%= colors_form.color_field :hex_code %>
-      <%= colors_form.label :proportion %>
-      <%= colors_form.number_field :proportion %>
-      <%= colors_form.label :_destroy, 'remove' %>
-      <%= colors_form.check_box :_destroy %>
-      <%= colors_form.hidden_field :id %>
+     <div class="col inkwell">
+        <div class="row">
+          <div class="col">
+            <%= colors_form.color_field :hex_code, class: "form-control form-control-color w-100" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= colors_form.number_field :proportion, class: "form-control" %>
+          </div>
+          <div class="col">
+            <%= colors_form.label :_destroy, 'remove', class: "btn btn-secondary delete-color-button" %>
+            <%= colors_form.check_box :_destroy, class: "btn-check" %>
+          </div> 
+        </div>
+        <%= colors_form.hidden_field :id %>
+      </div>
+  <% end %>
+  </div>
+    <% if @palette.id %>
+      <div class="row">
+        <div class="col gy-1">
+          <%= link_to "add color", palette_colors_url(@palette), method: :post, data: { turbo_method: :post }, id: "add-color-button", class: "btn btn-secondary w-100" %>
+        </div>
+      </div>
     <% end %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="row">
+      <div class="col gy-1">
+        <%= form.submit class: "btn btn-primary w-100" %>
+      </div>
+    </div>
+</div>
 <% end %>

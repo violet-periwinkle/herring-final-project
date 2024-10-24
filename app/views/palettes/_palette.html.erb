@@ -1,33 +1,41 @@
-<div id="<%= dom_id palette %>">
-  <p>
-    <strong>Title:</strong>
-    <%= palette.title %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= palette.user.name %>
-  </p>
-
+<div id="<%= dom_id palette %>" class="d-flex flex-column flex-fill bg-light p-1">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+      <p>
+        <strong>Title:</strong>
+        <%= palette.title %>
+      </p>
+      </div>
+      <div class="col">
+      <p>
+        <strong>Creator:</strong>
+        <%= link_to palette.user.name, palette.user %>
+      </p>
+      </div>
+      <div class="col">
+      <p>
+        <strong>Layout:</strong>
+        <%= palette.layout %>
+      </p>
+      </div>
+      <div class="col">
+      <p>
+        <strong>Spacing:</strong>
+        <%= palette.spacing %>
+      </p>
+      </div>
+    </div>
+    <div class="row">
   <p>
     <strong>Background:</strong>
-    <%= palette.background %>
+    <span style="color: <%= palette.background %>">&block; </span><%= palette.background %>
+    <strong>Colors:</strong>
+    <% palette.colors.each do |color| %>
+      <span style="color: <%= color.hex_code %>">&block; </span><%= color.hex_code %>
+    <%end%>
   </p>
-
-  <p>
-    <strong>Layout:</strong>
-    <%= palette.layout %>
-  </p>
-
-  <p>
-    <strong>Spacing:</strong>
-    <%= palette.spacing %>
-  </p>
-  <p><strong>Colors:</strong><ul>
-  <% @palette.colors.each do |color| %>
-  <li><%= link_to color.hex_code, palette_color_path(@palette, color) %></li>
-  <%end%>
-  </ul>
-  </p>
-  <%= render 'swatches', palette: @palette %>
+  </div>
+  </div>
+  <%= render 'palettes/swatches', palette: palette %>
 </div>

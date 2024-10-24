@@ -4,9 +4,9 @@
 
 <div id="users">
   <% @users.each do |user| %>
-    <%= render user %>
     <p>
-      <%= link_to "Show this user", user %>
+      <strong>Name: </strong><%= link_to user.name, user %>
+      <strong>Palettes:</strong> <%= user.palettes.count %>
     </p>
   <% end %>
 </div>

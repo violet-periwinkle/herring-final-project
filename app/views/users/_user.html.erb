@@ -5,8 +5,16 @@
   </p>
 
   <p>
-    <strong>Password:</strong>
-    <%= user.password %>
+    <strong>Palettes:</strong>
   </p>
-
+  <div class="container-fluid bg-light pb-2">
+    <div class="row">
+    <% user.palettes.each do |palette| %>
+    <div class="col d-flex flex-column">
+      <%= link_to palette.title, palette, class: "link-secondary pb-1" %>
+      <%= render "palettes/swatches", palette: palette %>
+      </div>
+    <% end %>
+    </div>
+    </div>
 </div>

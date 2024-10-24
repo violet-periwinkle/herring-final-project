@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
-:root{
-    background-color: #f0f0f0;
-}
+
+//  $primary: #606060;
+ @import "bootstrap";
+ :root {
+    --bs-body-bg: #e0e0e0;
+ }

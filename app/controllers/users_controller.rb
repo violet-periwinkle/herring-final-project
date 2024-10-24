@@ -57,6 +57,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def signin
+    session[:current_user] = params[:user]
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

@@ -1,7 +1,0 @@
-.palette-display{
-    display: flex;
-    min-height: 4rem;
-}
-input[type=number]{
-    width: 3em;
-}

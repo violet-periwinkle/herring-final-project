@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FinalProject</title>
+    <title>Final Project</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,22 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between">
+      <div class="navbar-nav mr-auto">
+        <%= link_to "palettes", palettes_path, class: "nav-item nav-link" %>
+        <%= link_to "users", users_path, class: "nav-item nav-link" %>
+      </div>
+      <div class="nav navbar-nav navbar-right ml-auto">
+        <% if !session[:current_user] %>
+          <button class="nav-item btn btn-outline-primary mx-1">login</button><button class="nav-item btn btn-outline-primary mx-1">sign up</button>
+        <% else %>
+          <button class="nav-item btn btn-primary mx-1">logout</button>
+        <% end %>
+        
+      </div>
+    </nav>
+    <div class="container-fluid d-flex flex-column min-vh-100">
     <%= yield %>
+    </div>
   </body>
 </html>

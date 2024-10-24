@@ -13,6 +13,7 @@ class PalettesController < ApplicationController
   # GET /palettes/new
   def new
     @palette = Palette.new
+    render edit
   end
 
   # GET /palettes/1/edit
@@ -25,7 +26,7 @@ class PalettesController < ApplicationController
 
     respond_to do |format|
       if @palette.save
-        format.html { redirect_to @palette, notice: "Palette was successfully created." }
+        format.html { redirect_to edit_palette_path(@palette), notice: "Palette was successfully created." }
         format.json { render :show, status: :created, location: @palette }
       else
         format.html { render :new, status: :unprocessable_entity }

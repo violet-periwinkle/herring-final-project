@@ -1,0 +1,46 @@
+# Models
+- User
+	- name
+	- password
+	- email?
+- Palette
+	- title
+	- creator
+	- background
+	- layout
+	- spacing
+- Color
+	- hex code
+	- proportion
+	- palette
+# Controllers
+- User
+	- new
+	- edit
+	- delete
+	- logon
+	- logoff
+	- show
+- Palette
+	- index
+	- show
+	- edit
+	- delete
+	- new
+- Color
+	- create
+	- delete
+	- edit
+# Views
+- User
+	- new
+	- edit
+	- show
+	- logon
+- Palette
+	- index
+	- show
+	- edit
+	- new
+- Color
+	- _color

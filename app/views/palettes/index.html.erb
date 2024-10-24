@@ -5,10 +5,12 @@
 <div id="palettes">
   <% @palettes.each do |palette| %>
     <% @palette = palette %>
+    <div class="bg-light p-1 mb-2">
     <%= render palette %>
-    <p>
-      <%= link_to "Show this palette", palette %>
+    <p class="my-1">
+      <%= link_to "Show this palette", palette, class: "btn btn-primary" %>
     </p>
+    </div>
   <% end %>
 </div>
 

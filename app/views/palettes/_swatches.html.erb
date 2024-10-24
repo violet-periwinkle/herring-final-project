@@ -1,5 +1,13 @@
-<div class="palette-display" style="background-color: <%= @palette.background %>; ">
-    <% @palette.colors.each do |color| %>
-    <div class="color-swatch" style="background-color: <%= color.hex_code %>; flex-grow: <%= color.proportion %>; margin: <%= @palette.spacing.to_f / 2 %>rem"></div>
+<div class="palette-display d-flex flex-fill" style="background-color: <%= palette.background %>; flex-direction: 
+<% case palette.layout %>
+    <% when "rows" %>
+        <%= "column" %>
+    <% when "columns" %>
+        <%= "row" %>
+    <% end %>
+">
+    <% palette.colors.each do |color| %>
+        <div class="color-swatch" style="background-color: <%= color.hex_code %>; flex-grow: <%= color.proportion %>; margin: <%= palette.spacing.to_f / 4 %>rem; min-height: <%= color.proportion %>rem; min-width: <%= color.proportion %>rem">
+    </div>
     <% end %>
 </div>

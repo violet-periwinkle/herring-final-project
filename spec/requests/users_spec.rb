@@ -1,21 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  describe "GET /users" do
-    it "works! (now write some real specs)" do
+  describe "get users_path" do
+    it "renders :index" do
       get users_path
-      expect(response).to have_http_status(200)
+      expect(response).to render_template(:index)
     end
   end
   describe "get user_path" do
-    it "renders the :show template"
-    it "redirects if user id is invalid"
+    it "renders the :show template" do
+      user = FactoryBot.create(:user)
+      get user_path(id: user.id)
+      expect(response).to render_template(:show)
+    end
+    it "redirects if user id is invalid" do
+      get user_path(id: 10000)
+      expect(response).to redirect_to users_path
+    end
   end
   describe "get new_user_path" do
-    it "renders the :new template"
+    it "renders the :new template" do
+      get new_user_path
+      expect(response).to render_template(:new)
+    end
   end
   describe "get edit_user_path" do
-    it "renders the :edit template"
+    it "renders the :edit template" do
+      user = FactoryBot.create(:user)
+      get edit_user_path(id: user.id)
+      expect(response).to render_template(:edit)
+    end
   end
   describe "post users_path with valid data" do
     it "saves a new entry and redirects to the show path for the entry"

@@ -11,6 +11,10 @@ RSpec.describe "Palettes", type: :request do
     it "renders the :show template"
     it "redirects if palette id is invalid"
   end
+  describe "get user_palette_path" do
+    it "renders the :show template"
+    it "redirects if user id is invalid"
+  end
   describe "get new_palette_path" do
     it "renders the :new template"
   end

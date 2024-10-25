@@ -1,0 +1,5 @@
+<h1>Signing in</h1>
+<%= form_with url: signin_url, method: :post do |form| %>
+  <%= form.collection_select :id, User.all, :id, :name, {}, class: "form-control bg-light" %>
+  <%= form.submit "login", class: "btn btn-primary" %>
+<% end %>

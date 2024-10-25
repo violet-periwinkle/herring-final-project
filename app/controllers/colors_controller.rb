@@ -12,7 +12,7 @@ class ColorsController < ApplicationController
   
   # GET /colors/new
   def new
-    @color = Color.new
+    @color = Color.new(color_params)
   end
 
   # GET /colors/1/edit

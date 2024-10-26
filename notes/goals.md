@@ -1,10 +1,7 @@
 # Goals
 ## Priority
-- finish styling
-- navbar
-- validation
-- rspec
 - clean up unused views
+- finish styling
 ## Optional
 - devise
 - reorder colors

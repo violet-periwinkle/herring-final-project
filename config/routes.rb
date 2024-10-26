@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   resources :palettes do
-    resources :colors
-  end 
-  #resources :colors
+    resources :colors, only: [:create, :update, :destroy]
+  end
   resources :users
   get "signin", to: "users#sign_in"
   post "signin", to: "users#set_sign_in"

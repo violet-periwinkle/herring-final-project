@@ -16,6 +16,14 @@
         <%= form.label :title, class: "form-label"%>
         <%= form.text_field :title, class: "form-control" %>
     </div>
+      <% if session[:current_user] %>
+        <%= form.hidden_field :user_id, value: session[:current_user]["id"] %>
+        <% else %>
+    <div class="col">
+        <%= form.label :user, class: "form-label"%>
+        <%= form.collection_select :user_id, User.all, :id, :name, {}, {class: "form-control"} %>
+    </div>
+        <% end %>
     <div class="col">
       <%= form.label :layout, class: "form-label" %>
       <%= form.select :layout, ['rows', 'columns'], {}, class: "form-control" %>

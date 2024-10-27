@@ -1,8 +1,8 @@
 # Goals
 ## Priority
-- clean up unused views
-- finish styling
+- check for bugs
 ## Optional
 - devise
+- add color to palette without reloading edit page
 - reorder colors
 - fonts

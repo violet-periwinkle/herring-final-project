@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="container-fluid bg-light">
+  <div class="container-fluid bg-light" id="form-container">
   <div class="row">
     <div class="col">
         <%= form.label :title, class: "form-label"%>
@@ -39,7 +39,7 @@
       <%= form.color_field :background, class: "form-control form-control-color w-100" %>
     </div>
   </div>
-  <div class="row">
+  <div class="row" id="paintbox">
     <%= form.fields_for :colors do |colors_form| %>
      <div class="col inkwell">
         <div class="row">

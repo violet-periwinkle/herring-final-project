@@ -1,4 +1,5 @@
 class PalettesController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
   before_action :set_palette, only: %i[ show edit update destroy ]
 
   # GET /palettes or /palettes.json
@@ -12,6 +13,7 @@ class PalettesController < ApplicationController
 
   # GET /palettes/new
   def new
+    #@current_user.palettes.new(palette_params)
     @palette = Palette.new
     render edit
   end
@@ -67,5 +69,11 @@ class PalettesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def palette_params
       params.require(:palette).permit(:title, :user_id, :background, :layout, :spacing, colors_attributes: [:id, :hex_code, :proportion, :palette_id, :_destroy])
+    end
+
+    def catch_not_found(e)
+      Rails.logger.debug("We had a not found exception.")
+      flash.alert = e.to_s
+      redirect_back_or_to palettes_path
     end
 end

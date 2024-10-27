@@ -18,9 +18,9 @@
       </div>
       <div class="nav navbar-nav navbar-right ml-auto">
         <% if !session[:current_user] %>
-          <button class="nav-item btn btn-outline-primary mx-1">login</button><button class="nav-item btn btn-outline-primary mx-1">sign up</button>
+          <%= link_to "login", signin_path, class: "nav-item btn btn-outline-primary mx-1" %>
         <% else %>
-          <button class="nav-item btn btn-primary mx-1">logout</button>
+          <%= link_to "logout", signin_path, method: :delete, data: { turbo_method: :delete }, class: "nav-item btn btn-outline-primary mx-1" %>
         <% end %>
         
       </div>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+ rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
+  before_action :set_user, only: %i[ show edit update destroy set_sign_in]
 
   # GET /users or /users.json
   def index
@@ -57,8 +58,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def signin
-    session[:current_user] = params[:user]
+  def sign_in
+  end
+
+  def set_sign_in
+    session[:current_user] = @user
+    redirect_to user_path(@user)
+  end
+
+  def sign_out
+    session[:current_user] = nil
+    redirect_back_or_to palettes_path
   end
 
   private
@@ -70,5 +80,11 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :password)
+    end
+
+    def catch_not_found(e)
+      Rails.logger.debug("We had a not found exception.")
+      flash.alert = e.to_s
+      redirect_back_or_to users_path
     end
 end

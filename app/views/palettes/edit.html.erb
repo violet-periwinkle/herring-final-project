@@ -1,5 +1,7 @@
 <h1>Editing palette</h1>
-
+<% content_for :head do %>
+  <%= javascript_import_module_tag "swatches" %>
+<% end %>
 <%= render "form", palette: @palette %>
 <div class="bg-light p-2">
 <%= render "swatches", palette: @palette %>

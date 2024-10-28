@@ -4,7 +4,11 @@ class PalettesController < ApplicationController
 
   # GET /palettes or /palettes.json
   def index
-    @palettes = Palette.all
+    if params[:user_id]
+      @palettes = User.find(params[:user_id]).palettes
+    else
+      @palettes = Palette.all
+    end
   end
 
   # GET /palettes/1 or /palettes/1.json

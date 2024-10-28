@@ -81,11 +81,16 @@ class PaletteElement {
     set colors (value) {
         this._colors = value;
     }
-    update(paletteData) {
+    update() {
+        const paletteData = new PaletteData(paletteForm)
         this.element.style.backgroundColor = paletteData.background;
         this.element.style.flexDirection = paletteData.layout;
         for (let i = 0; i < this.colors.length; i ++){
-            this.colors[i].update(paletteData.colors[i], paletteData.spacing);
+            if (inkwells[i].style.display == 'none'){
+                this.colors[i].element.style.display = 'none';
+            }else{
+                this.colors[i].update(paletteData.colors[i], paletteData.spacing);
+            }
         }
     }
 }
@@ -105,30 +110,18 @@ class ColorElement {
         this.element.style.flexGrow = colorData.proportion;
     }
 }
-class Inkwell {
-    constructor(element) {
-        this._element = element 
-    }
-    get element() {
-        return this._element;
-    }
-    set element (value) {
-        this._element = value;
-    }
-    vanishOnRemove() {
-        const removeBtn = this.element.querySelector('.delete-color-button')
-        removeBtn.addEventListener('click', () => {
-            this.element.style.display = 'none';
-        })
-    }
-}
+const inkwells = document.querySelectorAll('.inkwell');
+inkwells.forEach(inkwell => {
+    const removeBtn = inkwell.querySelector('.delete-color-button')
+    removeBtn.addEventListener('click', () => {
+        inkwell.style.display = 'none';
+    })
+})
 const paletteForm = document.querySelector('form');
 const paletteDisplay = document.querySelector('.palette-display');
 const paletteDisplayData = new PaletteData(paletteForm);
 const paletteDisplayElement = new PaletteElement(paletteDisplay);
-document.querySelector('h1').addEventListener('click', paletteDisplayElement.update(new PaletteData(document.querySelector('form'))));
-const inkwells = Array.from(paletteForm.querySelectorAll('.inkwell'));
-inkwells.forEach((inkwell, index) => { inkwells[index] = new Inkwell(inkwell)});
-inkwells.forEach(inkwell => {
-    inkwell.vanishOnRemove();
-})
+paletteForm.querySelectorAll('input').forEach(element => {
+    addEventListener('change', () => paletteDisplayElement.update());
+});
+paletteDisplayElement.update();
